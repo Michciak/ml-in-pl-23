@@ -21,10 +21,14 @@ df = load_data(raw_data)
 
 st.subheader("A dataframe written using st.write()", divider="gray")
 
+st.write(df)
+
 ############################################################################
 # We can use st.table()
 
 st.subheader("A static table, using st.table()", divider="gray")
+
+# st.table(df)
 
 ############################################################################
 # We can use st.dataframe
@@ -36,8 +40,12 @@ st.subheader("Using st.dataframe()", divider="gray")
 
 st.subheader("Using Styler", divider="gray")
 
+st.dataframe(df.style.background_gradient(subset=["streams"], cmap="BuGn"), use_container_width=True)
+
 ############################################################################
 # We can make an editable Dataframe
 
 st.subheader("Using st.data_editor()", divider="gray")
 
+df["label"] = False
+edited_df = st.data_editor(df)
